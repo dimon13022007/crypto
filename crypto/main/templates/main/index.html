@@ -1,0 +1,2015 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+    <title>Pixel Countdown</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100&family=Konkhmer+Sleokchher&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        body {
+            background-color: white;
+
+
+        }
+        .countdown-wrapper {
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 20px;
+}
+        #countdown {
+
+            color: #ffffff;
+            font-family: 'Rubik', cursive;
+            font-size: 3em;
+            letter-spacing: 2.3px;
+            margin-left: 320px;
+            margin-top: 720px;
+        }
+
+        .square {
+
+            position: relative;
+            z-index: 2;
+
+            width: 77px;
+            height: 80px;
+            display: inline-block;
+            margin-right: 6px;
+            background-color: #ffffff;
+            color: #000000;
+            text-align: center;
+            font-size: 5em;
+            line-height: 6.2em; /* установите желаемую высоту строки */
+        }
+
+
+
+
+        #days {
+
+          font-size: 12px; /* установите желаемый размер шрифта */
+            background-color:  #141D50;
+            position: fixed;
+            top: 650px;
+            left: 200px;
+            color: white;
+             font-family: 'Press Start 2P', cursive;
+             border: 2px solid white;
+               padding: 5px; /* add some padding */
+            border-radius: 10px;
+             line-height: 2.7em;
+
+}
+
+
+
+        #hours {
+           font-size: 12px; /* установите желаемый размер шрифта */
+           background-color: #141D50;
+           position: fixed;
+           top: 650px;
+           right: 1137px;
+           color: white;
+           border: 2px solid white;
+            font-family: 'Press Start 2P', cursive;
+                padding: 5px; /* add some padding */
+            border-radius: 10px;
+            line-height: 2.7em;
+
+}
+        #min {
+           font-size: 12px; /* установите желаемый размер шрифта */
+           background-color: #141D50;
+           position: fixed;
+           right: 1035px;
+           top: 650px;
+           color: white;
+           border: 2px solid white;
+            font-family: 'Press Start 2P', cursive;
+               padding: 5px; /* add some padding */
+            border-radius: 10px;
+            line-height: 2.7em;
+}
+        #sec {
+          font-size: 12px; /* установите желаемый размер шрифта */
+           background-color: #141D50;
+           position: fixed;
+           top: 650px;
+           right: 930px;
+           color: white;
+           border: 2px solid white;
+            font-family: 'Press Start 2P', cursive;
+               padding: 5px; /* add some padding */
+            border-radius: 10px;
+            line-height: 2.7em;
+
+}
+
+
+
+.white-block {
+  background-color: black;
+  width: 1990px; /* установите нужную ширину */
+  height: 120px; /* установите нужную высоту */
+  position: fixed;
+  top: 640px;
+  opacity: 0.9;
+  right: -70px;
+  z-index: 2;
+
+}
+
+
+
+
+
+   .blue-block {
+  background-color:   #141D50;
+  width: 1546px; /* установите нужную ширину */
+  height: 80px; /* установите нужную высоту */
+  position: fixed;
+  right: -10px;
+  top: -1px;
+  transition: background-color 0.5s ease;
+
+
+
+
+
+}
+
+.mg{
+    position: fixed;
+    z-index: 2;
+    top: 10px;
+    right: 1300px;
+
+
+
+
+}
+.text{
+    position: fixed;
+    z-index: 2;
+    top: 30px;
+    right: 1130px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+
+
+
+}
+.home{
+    position: fixed;
+    z-index: 2;
+    top: 6px;
+    right: 940px;
+
+    font-family: 'Rubik', cursive;
+    color: white;
+     text-decoration: none;
+
+}
+
+.about-us{
+    position: fixed;
+    z-index: 2;
+    top: 6px;
+    right: 840px;
+    font-family: 'Rubik', cursive;
+    color: white;
+    text-decoration: none;
+
+}
+
+.speakers{
+    position: fixed;
+    z-index: 2;
+    top: 6px;
+    right: 740px;
+    font-family: 'Rubik', cursive;
+    color: white;
+    text-decoration: none;
+
+}
+
+.sponsors{
+    position: fixed;
+    z-index: 2;
+    top: 6px;
+    right: 640px;
+    font-family: 'Rubik', cursive;
+    color: white;
+      text-decoration: none;
+}
+
+.partner{
+    position: fixed;
+    z-index: 2;
+    top: 6px;
+    right: 534px;
+    font-family: 'Rubik', cursive;
+    color: white;
+       text-decoration: none;
+
+}
+
+.home::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 16px;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.home:hover::after {
+  transform: scaleX(1);
+}
+
+.plan{
+   position: fixed;
+    z-index: 2;
+    top: 6px;
+    right: 440px;
+    font-family: 'Rubik', cursive;
+    color: white;
+
+
+
+}
+.about-us::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 16px;
+width: 100%;
+height: 2px;
+background-color: white;
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.3s ease;
+}
+
+.about-us:hover::after {
+transform: scaleX(1);
+}
+.speakers::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 16px;
+width: 100%;
+height: 2px;
+background-color: white;
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.3s ease;
+}
+
+.speakers:hover::after {
+transform: scaleX(1);
+}
+
+.sponsors::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 16px;
+width: 100%;
+height: 2px;
+background-color: white;
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.3s ease;
+}
+
+.sponsors:hover::after {
+transform: scaleX(1);
+}
+.partner::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 16px;
+width: 100%;
+height: 2px;
+background-color: white;
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.3s ease;
+}
+
+.partner:hover::after {
+transform: scaleX(1);
+}
+.plan::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: 16px;
+width: 100%;
+height: 2px;
+background-color: white;
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.3s ease;
+}
+
+.plan:hover::after {
+transform: scaleX(1);
+}
+
+
+.plp{
+    position: relative;
+
+
+    bottom: 740px;
+    right: 11px;
+    opacity: 2.8;
+
+
+
+}
+
+.text5{
+    position: relative;
+    bottom:1170px;
+    right: 5px;
+    color: white;
+    font-size: 27px;
+    letter-spacing: 9px;
+    font-family: 'Rubik', cursive;
+}
+.text6{
+    position: relative;
+    bottom:1150px;
+    right: 5px;
+    color: white;
+    font-size: 42px;
+    letter-spacing: 5px;
+    font-family: 'Press Start 2P', cursive;
+
+}
+.text8{
+    position: relative;
+    bottom:750px;
+    right: 5px;
+    color: white;
+    font-size: 42px;
+    letter-spacing: 2px;
+    font-family: 'Konkhmer Sleokchher', cursive;
+    color: #141D50;
+    font-size: 2.6em
+
+
+}
+.text9{
+    position: relative;
+    bottom:1720px;
+    right: 5px;
+    color: white;
+    font-size: 9px;
+
+    margin: 0 auto;
+    font-family: 'Open Sans Light', sans-serif;
+    color: black;
+    font-size: 0.8em;
+    line-height: .8em;
+    font-weight: 100;
+}
+
+
+
+
+.text10{
+
+    position: relative;
+
+    bottom:510px;
+    right:480px;
+    font-size: 2.2em;
+    font-family: 'Rubik', cursive;
+    color: black;
+
+}
+
+.text11{
+
+    position: relative;
+
+    bottom:620px;
+    right:470px;
+    font-size: 3.5em;
+    font-family: 'Rubik', cursive;
+    color: #141D50;
+}
+
+.text12{
+
+    position: relative;
+
+    bottom:615px;
+    right:160px;
+    font-size: 2.2em;
+    font-family: 'Rubik', cursive;
+    color: black;
+
+}
+.text13{
+    position: relative;
+
+    bottom:728px;
+    right:155px;
+    font-size: 3.5em;
+    font-family: 'Rubik', cursive;
+    color: #141D50;
+
+
+
+}
+
+.text14{
+    position: relative;
+    bottom:725px;
+    right: -160px;
+    font-size: 2.2em;
+    font-family: 'Rubik', cursive;
+    color: black;
+}
+
+.text15{
+    position: relative;
+
+    bottom:836px;
+    right:-160px;
+    font-size: 3.5em;
+    font-family: 'Rubik', cursive;
+    color: #141D50;
+
+
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.text16{
+    position: relative;
+    bottom:835px;
+    right: -490px;
+    font-size: 2.4em;
+    font-family: 'Rubik', cursive;
+    color: black;
+
+}
+
+
+.text17{
+     position: relative;
+
+    bottom:948px;
+    right:-490px;
+    font-size: 3.5em;
+    font-family: 'Rubik', cursive;
+    color: #141D50;
+
+}
+.purpleblock{
+  background-color: #272661;
+  width: 1990px; /* установите нужную ширину */
+  height: 500px; /* установите нужную высоту */
+  position: relative;
+  bottom: 800px;
+  right: 10px;
+}
+
+.speaker1{
+    position: relative;
+    bottom:725px;
+    right: -160px;
+
+
+
+}
+.text20{
+   position: relative;
+    bottom:1385px;
+    right: 260px;
+    color:white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5em;
+
+
+}
+.text21{
+    position: relative;
+    bottom:1355px;
+    right: 260px;
+    color:white;
+
+    font-size: 1.6em;
+
+
+}
+.text22{
+        position: relative;
+    bottom:1345px;
+    right: 260px;
+    color:white;
+
+    font-size: 1.6em;
+
+}
+.text23{
+      position: relative;
+    bottom:1335px;
+    right: 260px;
+    color:white;
+
+    font-size: 1.6em;
+
+}
+
+.text24{
+   position: relative;
+    bottom:1325px;
+    right: 260px;
+    color:white;
+    font-size: 1.6em;
+
+
+}
+
+.photo3{
+    position: relative;
+    bottom:1605px;
+    right: -460px;
+
+
+}
+
+.gradientbox{
+  background: white
+  width: 1990px; /* установите нужную ширину */
+  height: 1900px; /* установите нужную высоту */
+  position: relative;
+  bottom: 1540px;
+  right: 10px;
+
+
+}
+.topics{
+    position: relative;
+    bottom:3385px;
+    right: 20px;
+    color:black;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3.5em;
+
+
+}
+
+
+.box-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left: 117px;
+  bottom: 3300px;
+  border-radius: 20px
+}
+
+.box-img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img img {
+  width: 110%;
+  height: 73%;
+  margin-top: -40px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img .ll {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+.box-img2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left: 527px;
+  bottom: 3725px;
+  border-radius: 20px
+}
+
+.box-img2:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img2 img {
+  width: 110%;
+  height: 74%;
+  margin-top: -40px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img2 .ll2 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+
+.box-img3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left: 937px;
+  bottom: 4150px;
+  border-radius: 20px
+}
+
+.box-img3:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img3 img {
+  width: 111%;
+  height: 72%;
+  margin-top: -30px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img3 .ll3 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+.box-img4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:117px;
+  bottom: 4150px;
+  border-radius: 20px
+}
+
+.box-img4:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img4 img {
+  width: 111%;
+  height: 72%;
+  margin-top: -30px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img4 .ll4 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+.box-img5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:527px;
+  bottom: 4575px;
+  border-radius: 20px
+}
+
+.box-img5:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img5 img {
+  width: 111%;
+  height: 72%;
+  margin-top: -30px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img5 .ll5 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+.box-img6 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:938px;
+  bottom: 4999px;
+  border-radius: 20px
+}
+
+.box-img6:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img6 img {
+  width: 111%;
+  height: 72%;
+  margin-top: -30px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img6 .ll6 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+.box-img7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:938px;
+  bottom: 4992px;
+  border-radius: 20px
+}
+
+.box-img7:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img7 img {
+  width: 111%;
+  height: 72%;
+  margin-top: -60px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img7 .ll7 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+.box-img8 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:528px;
+  bottom: 5417px;
+  border-radius: 20px
+}
+
+.box-img8:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img8 img {
+  width: 111%;
+  height: 72%;
+  margin-top: -60px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img8 .ll8 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+.box-img9 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:114px;
+  bottom: 5842px;
+  border-radius: 20px
+}
+
+.box-img9:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img9 img {
+  width: 110%;
+  height: 66%;
+  margin-top: -60px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img9 .ll9 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+
+.box-img10 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:114px;
+  bottom: 5839px;
+  border-radius: 20px
+}
+
+.box-img10:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img10 img {
+  width: 110%;
+  height: 66%;
+  margin-top: -60px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img10 .ll10 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+.box-img11 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:530px;
+  bottom: 6263px;
+  border-radius: 20px
+}
+
+.box-img11:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img11 img {
+  width: 110%;
+  height: 66%;
+  margin-top: -60px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img11 .ll11 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+
+.box-img12 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 340px;
+  height: 380px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:938px;
+  bottom: 6688px;
+  border-radius: 20px
+}
+
+.box-img12:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img12 img {
+  width: 110%;
+  height: 69%;
+  margin-top: -60px;
+  line-height: 80px;
+  border-radius: 20px
+}
+
+.box-img12 .ll12 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+    font-family: 'Rubik', cursive;
+
+}
+
+
+.dragon{
+    position: relative;
+    bottom:-615px;
+    right: 60px;
+    color:black;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 4.5em;
+
+
+}
+
+.cat{
+     position: relative;
+    bottom:6345px;
+    right: 230px;
+    width: 900px;
+
+
+
+}
+.box-img13 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:138px;
+  bottom: 6388px;
+  border-radius: 20px
+
+}
+
+.box-img13 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img13 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-25px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img13 .ll13 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+
+.box-img14 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:428px;
+  bottom: 6753px;
+  border-radius: 20px
+
+}
+
+.box-img14 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img14 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-25px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img14 .ll14 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+.box-img15 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:716px;
+  bottom: 7120px;
+  border-radius: 20px
+
+}
+
+.box-img15 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img15 img {
+  width: 80%;
+  height: 49%;
+  margin-top:3px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img15 .ll15 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+.box-img16 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:1010px;
+  bottom: 7487px;
+  border-radius: 20px
+
+}
+
+.box-img16 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img16 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-25px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img16 .ll16 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+.box-img17 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:1010px;
+  bottom: 7477px;
+  border-radius: 20px
+
+}
+
+.box-img17 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img17 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-5px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img17 .ll17 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+.box-img18 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:720px;
+  bottom: 7840px;
+  border-radius: 20px
+
+}
+
+.box-img18 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img18 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-35px;
+  line-height: 60px;
+  border-radius: 20px
+
+}
+
+.box-img18 .ll18 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+}
+.box-img19 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:425px;
+  bottom: 8207px;
+  border-radius: 20px
+
+}
+
+.box-img19 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img19 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-25px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img19 .ll19 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+.box-img20 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:135px;
+  bottom: 8573px;
+  border-radius: 20px
+
+}
+
+.box-img20 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img20 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-25px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img20 .ll20 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+.box-img21 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:135px;
+  bottom: 8565px;
+  border-radius: 20px
+
+}
+
+.box-img21 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img21 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-25px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img21 .ll21 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+.box-img22 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:425px;
+  bottom: 8930px;
+  border-radius: 20px
+
+}
+
+.box-img22 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img22 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-25px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img22 .ll22 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+.box-img23 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:720px;
+  bottom: 9294px;
+  border-radius: 20px
+
+}
+
+.box-img23 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img23 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-25px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img23 .ll23 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+.box-img24 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 210px;
+  height: 320px;
+  border: 3px solid #EFF0F0;
+  padding: 20px;
+  background-color: #141D50;
+  color: white;
+  position: relative;
+  left:1010px;
+  bottom: 9660px;
+  border-radius: 20px
+
+}
+
+.box-img24 img:hover {
+  transform: scale(1.02);
+
+}
+
+.box-img24 img {
+  width: 80%;
+  height: 49%;
+  margin-top:-25px;
+  line-height: 40px;
+  border-radius: 20px
+
+}
+
+.box-img24 .ll24 {
+  text-align: center;
+  color: white;
+  margin-top: 60px;
+  font-family: 'Rubik', cursive;
+
+
+}
+.dragon2{
+    position: relative;
+    bottom:-1945px;
+    right: 30px;
+    color:black;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3.5em;
+
+
+}
+
+.dragon3{
+    position: relative;
+    bottom:9395px;
+    right: 490px;
+
+
+
+
+}
+.dragon4{
+    position: relative;
+    bottom:9495px;
+    right: 200px;
+
+
+
+}
+.dragon5{
+    position: relative;
+    bottom:9595px;
+    right: -130px;
+
+
+
+}
+.dragon6{
+    position: relative;
+    bottom:9655px;
+    right: -480px;
+
+
+
+}
+.dragon7{
+    position: relative;
+    bottom:9555px;
+    right: 510px;
+
+
+
+}
+.dragon8{
+    position: relative;
+    bottom:9675px;
+    right: 210px;
+
+
+
+}
+.dragon9{
+    position: relative;
+    bottom:9785px;
+    right: -130px;
+
+
+
+}
+.dragon10{
+    position: relative;
+    bottom:9855px;
+    right: -480px;
+
+
+
+}
+    </style>
+</head>
+<body>
+<div class="white-block"></div>
+<div class="countdown-wrapper">
+    <div id="countdown">
+        <div class="square" id="days">DAYS</div>
+        <div class="square" id="hours">HOURS</div>
+        <div class="square" id="min">MIN</div>
+        <div class="square" id="sec">SEC</div>
+
+    </div>
+    <div class="blue-block"></div>
+
+    <div class="mg"><img src="{% static 'main/img/LOGO.png' %}" width="60px"></div>
+    <div class="text">CryptoGOAT</div>
+    <a href="#section2" class="home"><h4>Home</h4></a>
+    <a href="#section1" class="about-us"><h4>About Us</h4></a>
+    <a href="#section4" class="speakers"><h4>Speakers</h4></a>
+    <a href="#section5" class="sponsors"><h4>Sponsors</h4></a>
+
+     <a href="#section3" class="partner"><h4>Discussion</h4></a>
+    <div class="plan"><h4>Floor Plan</h4></div>
+    <div class="plp" id="section2"><img src="{% static 'main/img/photo_2023-05-06_12-25-10.jpg' %}" height="700px" width="1542px"></div>
+    <div class="text5">1 July 2023,  Dubai, ATLANTIS, THE PALM</div>
+    <div class="text6">CryptoGOAT DUBAI 2023</div>
+    <div class="text8" id="section1"><h3>WHO WE ARE</h3></div>
+    <div class="text10">Visitors</div>
+    <div class="text11">1000+</div>
+    <div class="text12">Companies</div>
+    <div class="text13">100+</div>
+    <div class="text14">Speakers</div>
+    <div class="text15">10+</div>
+    <div class="text16">countries</div>
+    <div class="text17">30+</div>
+    <a name="bottom"></a>
+    <div class="purpleblock"></div>
+
+<div class="text9">
+    <p style="text-indent: 50px;">CryptoGOAT is the blockchain conference network bringing together the key players of the crypto industry and experts to redefine the future of finance.</p>
+                               <p>The edition of the CryptoGOAT will take place during on July 1, 2023 in Dubai, with the world’s top crypto companies and blockchain entrepreneurs.</p>
+                               <p>Today, UAE, specifically Dubai is gearing up to become a global crypto hub. Thus, CryptoGOAT will be the gathering in the region on behalf of the</p>
+                                   <p>world of blockchain and cryptocurrency, with a wide range of topics focused on the financial technologies of the future, extensive networking
+                                      <p>opportunities and participation from more than 40 countries.This event is a must-attend for anyone interested in the future</p>
+  <p style="text-indent: 20px;"><p>This event is a must-attend for anyone interested in the future of finance and the emerging blockchain industry.</p>
+</div>
+
+    <div class="text20">WHY TO ATTEND?</div>
+    <div class="text21">For the people who belong to the crypto industry, be a part of our summit to</div>
+    <div class="text22">deliver the industry’s rich content and updates on cryptocurrencies to explore</div>
+    <div class="text23">the various cryptocurrency exchanges and the digital currency blow-up.</div>
+    <div class="text24">Figure out how it can revolutionize the globe and comprehend the crypto era.</div>
+    <div class="photo3"><img src="https://cryptoexpodubai.com/wp-content/uploads/2023/04/CED-images-2.png"  alt=""></div>
+
+
+
+
+
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date(" July 1, 2023 6:30 pm").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Calculate days, hours, minutes and seconds left
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="countdown"
+            document.getElementById("days").innerHTML = days + "<br> DAYS";
+            document.getElementById("hours").innerHTML = hours + "<br> HOURS";
+            document.getElementById("min").innerHTML = minutes + "<br> MIN";
+            document.getElementById("sec").innerHTML = seconds + "<br> SEC";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+
+    </script>
+<script>
+    const blueBlock = document.querySelector(".blue-block");
+
+window.addEventListener("scroll", function() {
+  const scrollPosition = window.scrollY;
+  if (scrollPosition > 50) {
+    blueBlock.style.backgroundColor = "#141D50";
+    blueBlock.style.zIndex = "2";
+  } else {
+    blueBlock.style.backgroundColor = "transparent";
+    blueBlock.style.zIndex = "0";
+  }
+});
+
+
+
+
+</script>
+<script>
+$(document).ready(function(){
+  // Добавляем плавную прокрутку к всем ссылкам
+  $("a").on('click', function(event) {
+
+    // Убедитесь, что это ссылка внутри страницы
+    if (this.hash !== "") {
+      // Запретим стандартное поведение ссылки
+      event.preventDefault();
+
+      // Получаем якорь из URL
+      var hash = this.hash;
+
+      // Используем метод animate() jQuery для добавления плавной прокрутки к якорю на странице
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Добавляем якорь в URL после прокрутки
+        window.location.hash = hash;
+      });
+    } // Конец if
+  });
+});
+</script>
+
+
+
+    <div class="dragon" id="section4">Our Speakers</div>
+    <div class="dragon2" id="section5">Our Sponsors</div>
+
+
+    <div class="gradientbox" id="section3"></div>
+    <div class="topics"> Discussion Topics</div>
+
+<div class="box-img">
+  <img src="https://www.zmax.work/wp-content/uploads/2021/12/web-3.0-e1521806675682.jpg" width="220px" alt="Your Image">
+  <div class="ll">
+    WHAT WEB 3.0 MEANS FOR ENTERPRISES (Sunny Lu)
+
+  </div>
+</div>
+
+
+
+    <div class="box-img2">
+  <img src="https://ipquorum.ru/assets/images/30/30109c_METAVSEL.jpg" width="220px" alt="Your Image">
+  <div class="ll2">
+    VALUE CREATION IN THE METAVERSE
+      (Gracy Chen)
+
+  </div>
+</div>
+
+        <div class="box-img3">
+  <img src="https://aussiedlerbote.de/wp-content/uploads/2022/08/stejblkoiny-ucdc-i-euroc-v-chem-xranit-kriptovalyutu-1.jpg" width="220px" alt="Your Image">
+  <div class="ll3">
+    THE ROLE OF STABLECOINS IN A DECENTRALIZED ECOSYSTEM (Nena Dokuzov & Jean Charles Gaudechon)
+  </div>
+</div>
+
+
+        <div class="box-img4">
+  <img src="https://media.licdn.com/dms/image/D4E12AQGxJPL6wkyaQA/article-cover_image-shrink_720_1280/0/1654580508803?e=2147483647&v=beta&t=sWnkNiEoX3fEKuO9SaQY8gj7VYlIgd6HE3iwiUDsSUs" width="220px" alt="Your Image">
+  <div class="ll4">
+    DAOS: NEW BREED OF INTERNET-NATIVE ORGANIZATIONS (Max Kordek)
+  </div>
+</div>
+
+        <div class="box-img5">
+  <img src="https://happycoin.club/wp-content/uploads/2017/07/blokcheyn.png" width="220px" alt="Your Image">
+  <div class="ll5">
+    MAXIMIZING ESG IMPACT WITH BLOCKCHAIN (Helen Hai)
+  </div>
+</div>
+
+        <div class="box-img6">
+  <img src="https://freedmanclub.com/wp-content/uploads/2021/08/%D0%92-%D1%87%D0%B5%D0%BC-%D1%80%D0%B0%D0%B7%D0%BD%D0%B8%D1%86%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%B4%D0%B5%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%B0%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%BC%D0%B8-%D1%84%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%B0%D0%BC%D0%B8-DeFi-%D0%B8-%D1%86%D0%B5%D0%BD%D1%82%D1%80%D0%B0%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%BC%D0%B8-%D1%84%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%B0%D0%BC%D0%B8-CeFi-800x445.jpg" width="220px" alt="Your Image">
+  <div class="ll6">
+    BRIDGING DEFI AND CEFI (Jason Allegrante)
+  </div>
+</div>
+
+    <div class="box-img7">
+  <img src="https://polygontoday.com/wp-content/uploads/sites/751/2022/10/50413-game_cover.jpg" width="220px" alt="Your Image">
+  <div class="ll7">
+    WEB 3 GAMING: THE NEW FRONTIER? (Sunny Lu)
+  </div>
+</div>
+        <div class="box-img8">
+  <img src="https://s3.eu-central-1.amazonaws.com/nps-prd/news/previews/images/virtual-980x548px-ru.jpg" width="220px" alt="Your Image">
+  <div class="ll8">
+    DECRYPTING THE REGULATORY LANDSCAPE OF VIRTUAL ASSETS (Reece Merrick)
+  </div>
+</div>
+        <div class="box-img9">
+  <img src="https://cryptohamster.org/wp-content/uploads/2022/03/107ce3baebeab29e5c9000fdf59f4780.jpg" width="220px" alt="Your Image">
+  <div class="ll9">
+    CENTRAL BANK DIGITAL CURRENCIES, AND CROSS-BORDER PAYMENTS (Mohammed Alblooshi)
+  </div>
+</div>
+
+
+    <div class="box-img10">
+  <img src="https://uploads-ssl.webflow.com/614f1228141120d1a594a1c4/6239f373e742cbd48e899460_3-Web-3.0-is-Here.png" width="220px" alt="Your Image">
+  <div class="ll10">
+    WEB 3: THE FUTURE IS HERE AND NOW (Sunny Lu)
+  </div>
+</div>
+
+
+        <div class="box-img11">
+  <img src="https://paytechlaw.com/wp-content/uploads/AdobeStock_430001330_denisismagilov.jpg" width="220px" alt="Your Image">
+  <div class="ll11">
+     NFT MARKET OVERVIEW: TRENDS & OPPORTUNITIES (Alex Zinder & Nicole Purin)
+  </div>
+</div>
+
+            <div class="box-img12">
+  <img src="https://academy.moralis.io/wp-content/uploads/2022/07/22_07_The-Importance-of-Blockchain-Interoperability-1.jpg" width="220px" alt="Your Image">
+  <div class="ll12">
+     INTEROPERABILITY - CHALLENGES AND OPPORTUNITIES (Dina Sam'an)
+  </div>
+</div>
+
+
+                <div class="box-img13">
+
+  <img src="{% static 'main/img/1)Sunny-Lu-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll13">
+     Sunny Lu - (Vechain)
+  </div>
+</div>
+
+                <div class="box-img14">
+
+  <img src="{% static 'main/img/2)Helen-Hai-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll14">
+     Helen Hai - (Binance)
+  </div>
+</div>
+                <div class="box-img15">
+
+  <img src="{% static 'main/img/3)Alex-Zinder-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll15">
+     Alex Zinder - (Ledger Enterprise)
+  </div>
+</div>
+
+                    <div class="box-img16">
+
+  <img src="{% static 'main/img/4)Gracy-Chen-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll16">
+     Gracy Chen - (Bitget)
+  </div>
+</div>
+
+    <div class="box-img17">
+
+  <img src="{% static 'main/img/5)Mohammed-Alblooshi-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll17">
+     Mohammed Alblooshi - (Dubai International Financial Centre Authority)
+  </div>
+</div>
+
+      <div class="box-img18">
+
+  <img src="{% static 'main/img/6)Max-Kordek-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll18">
+     Max Kordek - (Lisk)
+  </div>
+</div>
+
+          <div class="box-img19">
+
+  <img src="{% static 'main/img/7)Nena-Dokuzov-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll19">
+     Nena Dokuzov - (Alserkal Group)
+  </div>
+</div>
+
+
+
+    <div class="box-img20">
+
+  <img src="{% static 'main/img/8)Reece-Merrick-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll20">
+     Reece Merrick - (Ripple)
+  </div>
+</div>
+
+   <div class="box-img21">
+
+  <img src="{% static 'main/img/d.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll21">
+     Reece Merrick - (Ripple)
+  </div>
+</div>
+
+   <div class="box-img22">
+
+  <img src="{% static 'main/img/10)Jean-Charles-Gaudechon-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll22">
+     Jean Charles-Gaudechon - (OneFootball Labs)
+  </div>
+</div>
+   <div class="box-img23">
+
+  <img src="{% static 'main/img/11)Nicole-Purin-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll23">
+     Nicole Purin - (OKX)
+  </div>
+</div>
+       <div class="box-img24">
+
+  <img src="{% static 'main/img/12)Jason-Allegrante-round.png' %}" width="150px" alt="Your Image">
+
+  <div class="ll24">
+     Jason Allegrante - (Fireblocks)
+  </div>
+</div>
+
+<div class="dragon3">
+     <a href="https://woodstockfund.com" target="_blank"><img src="{% static 'main/img/1)Woodstock Fund.png' %}" width="230px"></a>
+</div>
+
+<div class="dragon4">
+     <a href="https://tykheblock.ventures/" target="_blank"><img src="{% static 'main/img/2)C3.png' %}" width="230px"></a>
+</div>
+
+<div class="dragon5">
+     <a href="https://annexinvestments.com/" target="_blank"><img src="{% static 'main/img/3)Annex-Investments.png' %}" width="230px"></a>
+</div>
+
+    <div class="dragon6">
+     <a href="https://momentum6.com/" target="_blank"><img src="{% static 'main/img/4)Momentum6.png' %}" width="230px"></a>
+</div>
+
+        <div class="dragon7">
+     <a href="https://www.888vc.co/" target="_blank"><img src="{% static 'main/img/5)888vc.png' %}" width="230px"></a>
+</div>
+
+           <div class="dragon8">
+     <a href="https://dsainvestments.com/" target="_blank"><img src="{% static 'main/img/6)DSA-Investments.png' %}" width="230px"></a>
+</div>
+
+
+    <div class="dragon9">
+     <a href="https://tykheblock.ventures/" target="_blank"><img src="{% static 'main/img/7)Tykhe Block Ventures.png' %}" width="230px"></a>
+</div>
+
+
+    <div class="dragon10">
+     <a href="https://18ventures.co/" target="_blank"><img src="{% static 'main/img/8)18 Ventures.png' %}" width="230px"></a>
+</div>
+
+
+
+</body>
+</html>
+
+
+
+
