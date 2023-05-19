@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Анімована книга</title>
+    <style>
+        /* Стилі для книги */
+        .book {
+            width: 80%;
+            height: 80vh;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+
+        .page {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+        }
+
+        .left-page {
+            left: 0;
+            transform-origin: left center;
+        }
+
+        .right-page {
+            right: 0;
+            transform-origin: right center;
+        }
+
+        /* JavaScript для перетягування сторінок */
+        <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const book = document.querySelector('.book');
+            const pages = document.querySelectorAll('.page');
+
+            let startX = 0;
+            let currentX = 0;
+            let dragging = false;
+
+            function handleMouseDown(event) {
+                dragging = true;
+                startX = event.pageX || event.touches[0].pageX;
+                currentX = startX;
+            }
+
+            function handleMouseMove(event) {
+                if (!dragging) return;
+                currentX = event.pageX || event.touches[0].pageX;
+                const diffX = currentX - startX;
+                const percentX = diffX / book.offsetWidth;
+                const angle = -180 * percentX;
+
+                for (const page of pages) {
+                    page.style.transform = `rotateY(${angle}deg)`;
+                }
+            }
+
+            function handleMouseUp() {
+                dragging = false;
+            }
+
+            book.addEventListener('mousedown', handleMouseDown);
+            book.addEventListener('mousemove', handleMouseMove);
+            book.addEventListener('mouseup', handleMouseUp);
+
+            book.addEventListener('touchstart', handleMouseDown);
+            book.addEventListener('touchmove', handleMouseMove);
+            book.addEventListener('touchend', handleMouseUp);
+        });
+        </script>
+    </style>
+</head>
+<body>
+    <div class="book">
+        <div class="page left-page">
+            <!-- Зміст для лівої сторінки -->
+        </div>
+        <div class="page right-page">
+            <!-- Зміст для правої сторінки -->
+        </div>
+    </div>
+</body>
+</html>

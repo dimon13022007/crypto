@@ -2,7 +2,12 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
+import pytesseract
+from PIL import Image
+from .forms import ImageUploadForm
 
+
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 def index(request):
     return render(request, 'main/index.html')
 
@@ -32,7 +37,7 @@ def login_view(request):
         else:
             # Повідомлення про помилку аутентифікації
             error_message = 'Invalid username or password.'
-            return render(request, 'login.html', {'error_message': error_message})
+            return render(request, 'main/login.html', {'error_message': error_message})
     return render(request, 'main/login.html')
 
 def logout_view(request):
@@ -42,7 +47,22 @@ def logout_view(request):
 
 
 
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            text = extract_text_from_image(image)
+            return render(request, 'main/result.html', {'text': text})
+    else:
+        form = ImageUploadForm()
+    return render(request, 'main/upload.html', {'form': form})
 
+def extract_text_from_image(image):
+    # Обробка картинки та отримання тексту
+    img = Image.open(image)
+    text = pytesseract.image_to_string(img, 'eng+rus+ukr')
+    return text
 
 
 
