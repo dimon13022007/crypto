@@ -15,4 +15,5 @@ class RegistrationForm(UserCreationForm):
 
 
 class ImageUploadForm(forms.Form):
-    image = forms.ImageField(label='Завантажте картинку')
+    image = forms.ImageField(label='Завантажте картинку',
+                             widget=forms.ClearableFileInput(attrs={'class': 'form-control-file'}))

@@ -2,13 +2,44 @@
 <html>
 <head>
     <title>Завантажити картинку</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Завантажте картинку</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Завантажити</button>
-    </form>
+    <div class="container">
+        <h2>Завантажте картинку</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <div class="form-group">
+                <label for="language" class="form-label">Мова перекладу:</label>
+                <select class="form-select" name="language" id="language">
+                    <option value="rus">Російська</option>
+                    <option value="eng">Англійська</option>
+                    <option value="ukr">Українська</option>
+                    <!-- Додайте інші варіанти мови за потребою -->
+                </select>
+            </div>
+            <button class="btn btn-primary" type="submit">Завантажити</button>
+        </form>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
-</html>
