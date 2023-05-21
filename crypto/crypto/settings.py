@@ -45,9 +45,6 @@ INSTALLED_APPS = [
 
 
 
-
-
-
 ]
 
 MIDDLEWARE = [
