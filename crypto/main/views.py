@@ -10,7 +10,7 @@ import re
 
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-openai.api_key = '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'
+openai.api_key = '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'
 
 def index(request):
     return render(request, 'main/index.html')

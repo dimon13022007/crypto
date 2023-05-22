@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,26 +21,181 @@
         .btn-primary {
             margin-top: 20px;
         }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 20px;
+            background-color: #f1f1f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #3498db;
+            width: 0;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 50px;
+        }
+
+        .loader-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+        .navbar-text {
+    font-size: 19px;
+     margin-left: 40px;
+      position: relative;
+     right: -50px;
+
+}
+body {
+    background-color: #FFFFFF;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+}
+ .custom-navbar {
+        background-color: #3B4765;
+    }
+  .navbar-brand img {
+
+    }
+
+    .custom-container {
+        max-width: 5200px; /* Увеличиваем максимальную ширину контейнера */
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-top: 70px;
+
+    }
+
+    .custom-container-large {
+        /* Стили для увеличенного контейнера */
+    }
+
+    .custom-heading {
+        font-size: 24px; /* Увеличиваем размер заголовка */
+    }
+
+    .custom-heading-large {
+        /* Стили для увеличенного заголовка */
+    }
+
+    .custom-form-group {
+        /* Стили для группы формы */
+    }
+
+    .custom-form-group-large {
+        /* Стили для увеличенной группы формы */
+    }
+
+    .custom-select {
+        /* Стили для выпадающего списка */
+    }
+
+    .custom-select-large {
+        /* Стили для увеличенного выпадающего списка */
+    }
+
+    .custom-button {
+        /* Стили для кнопки */
+    }
+
+    .custom-button-large {
+        /* Стили для увеличенной кнопки */
+    }
+
     </style>
 </head>
-<body>
-    <div class="container">
-        <h2>Завантажте картинку</h2>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form }}
-            <div class="form-group">
-                <label for="language" class="form-label">Мова перекладу:</label>
-                <select class="form-select" name="language" id="language">
-                    <option value="rus">Російська</option>
-                    <option value="eng">Англійська</option>
-                    <option value="ukr">Українська</option>
-                    <!-- Додайте інші варіанти мови за потребою -->
-                </select>
-            </div>
-            <button class="btn btn-primary" type="submit">Завантажити</button>
-        </form>
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+    <a class="navbar-brand" href="#"><img src="{% static 'main/img/Снимок_экрана_2023-05-22_184900-removebg-preview.png' %}" width="180px" alt="Your Image"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link navbar-text" href="/">Головна</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navbar-text" href="/about">Про нас</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navbar-text" href="/terms">Умови використання</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link navbar-text" href="/support">Підтримка</a>
+            </li>
+        </ul>
     </div>
+</nav>
+
+
+
+<body>
+    <div class="custom-container">
+    <h2 class="custom-heading">Завантажте картинку</h2>
+    <form method="post" enctype="multipart/form-data" id="upload-form">
+        {% csrf_token %}
+        {{ form }}
+        <div class="form-group custom-form-group">
+            <label for="language" class="form-label">Мова перекладу:</label>
+            <select class="form-select custom-select" name="language" id="language">
+                <option value="rus">Російська</option>
+                <option value="eng">Англійська</option>
+                <option value="ukr">Українська</option>
+                <!-- Додайте інші варіанти мови за потребою -->
+            </select>
+        </div>
+        <button class="btn btn-primary custom-button" type="submit" id="upload-btn">Завантажити</button>
+        <div class="loader hidden" id="loader">
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progress-bar"></div>
+            </div>
+            <p class="loader-text">Завантаження...</p>
+        </div>
+    </form>
+</div>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function() {
+            document.getElementById('upload-btn').setAttribute('disabled', 'disabled');
+            document.getElementById('loader').classList.remove('hidden');
+            animateProgressBar();
+        });
+
+        function animateProgressBar() {
+            var progressBar = document.getElementById('progress-bar');
+            var width = 1;
+            var interval = setInterval(frame, 60);
+
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(interval);
+                } else {
+                    width++;
+                    progressBar.style.width = width + '%';
+                }
+            }
+        }
+    </script>
 </body>
+
+
